@@ -1,0 +1,474 @@
+
+------------------------------------------------------------
+Root project - Provides automatic scan of code by Checkmarx server and shows results summary and trend in Jenkins interface.
+------------------------------------------------------------
+
+runtime - Runtime dependencies for source set 'main' (deprecated, use 'runtimeOnly' instead).
++--- com.checkmarx:cx-config-provider:1.0.14
+|    +--- org.eclipse.jgit:org.eclipse.jgit:4.8.0.201706111038-r -> 4.10.0.201712302008-r
+|    |    +--- com.jcraft:jsch:0.1.54
+|    |    +--- com.googlecode.javaewah:JavaEWAH:1.1.6
+|    |    +--- org.apache.httpcomponents:httpclient:4.5.2 -> 4.5.13
+|    |    |    +--- org.apache.httpcomponents:httpcore:4.4.13
+|    |    |    +--- commons-logging:commons-logging:1.2
+|    |    |    \--- commons-codec:commons-codec:1.11 -> 1.15
+|    |    \--- org.slf4j:slf4j-api:1.7.2 -> 1.7.25
+|    +--- com.google.guava:guava:29.0-jre
+|    |    +--- com.google.guava:failureaccess:1.0.1
+|    |    +--- com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
+|    |    +--- com.google.code.findbugs:jsr305:3.0.2
+|    |    +--- org.checkerframework:checker-qual:2.11.1
+|    |    +--- com.google.errorprone:error_prone_annotations:2.3.4
+|    |    \--- com.google.j2objc:j2objc-annotations:1.3
+|    +--- org.apache.commons:commons-lang3:3.10
+|    +--- commons-io:commons-io:2.6 -> 2.11.0
+|    +--- org.apache.httpcomponents:httpmime:4.5.4
+|    |    \--- org.apache.httpcomponents:httpclient:4.5.4 -> 4.5.13 (*)
+|    +--- org.apache.httpcomponents:fluent-hc:4.5.4
+|    |    +--- org.apache.httpcomponents:httpclient:4.5.4 -> 4.5.13 (*)
+|    |    \--- commons-logging:commons-logging:1.2
+|    +--- org.apache.httpcomponents:httpcore:4.4.12 -> 4.4.13
+|    +--- org.apache.httpcomponents:httpclient-win:4.5.10
+|    |    +--- org.apache.httpcomponents:httpclient:4.5.10 -> 4.5.13 (*)
+|    |    +--- net.java.dev.jna:jna:4.5.2
+|    |    \--- net.java.dev.jna:jna-platform:4.5.2
+|    |         \--- net.java.dev.jna:jna:4.5.2
+|    +--- com.fasterxml.jackson.core:jackson-databind:2.10.2 -> 2.11.3
+|    |    +--- com.fasterxml.jackson.core:jackson-annotations:2.11.3
+|    |    \--- com.fasterxml.jackson.core:jackson-core:2.11.3
+|    +--- com.typesafe:config:1.3.3
+|    \--- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.2 -> 2.11.3
+|         +--- com.fasterxml.jackson.core:jackson-databind:2.11.3 (*)
+|         +--- org.yaml:snakeyaml:1.26
+|         \--- com.fasterxml.jackson.core:jackson-core:2.11.3
++--- com.checkmarx:cx-client-common:2021.4.9
+|    +--- org.freemarker:freemarker:2.3.23
+|    +--- org.apache.httpcomponents:httpmime:4.5.4 (*)
+|    +--- org.apache.httpcomponents:httpclient:4.5.13 (*)
+|    +--- org.apache.httpcomponents:httpcore:4.4.12 -> 4.4.13
+|    +--- org.apache.httpcomponents:httpclient-win:4.5.10 (*)
+|    +--- org.bouncycastle:bcprov-jdk15on:1.69
+|    +--- org.codehaus.plexus:plexus-utils:3.2.0
+|    +--- org.codehaus.plexus:plexus-archiver:4.1.0
+|    |    +--- org.codehaus.plexus:plexus-io:3.1.1
+|    |    |    \--- commons-io:commons-io:2.6 -> 2.11.0
+|    |    +--- org.iq80.snappy:snappy:0.4
+|    |    \--- org.tukaani:xz:1.8
+|    +--- com.google.guava:guava:27.0-jre -> 29.0-jre (*)
+|    +--- com.checkmarx:cx-ws-fs-agent:21.0.1
+|    |    +--- io.vertx:vertx-core:3.9.8
+|    |    |    +--- io.netty:netty-common:4.1.65.Final -> 4.1.68.Final
+|    |    |    +--- io.netty:netty-buffer:4.1.65.Final -> 4.1.68.Final
+|    |    |    |    \--- io.netty:netty-common:4.1.68.Final
+|    |    |    +--- io.netty:netty-transport:4.1.65.Final -> 4.1.68.Final
+|    |    |    |    +--- io.netty:netty-common:4.1.68.Final
+|    |    |    |    +--- io.netty:netty-buffer:4.1.68.Final (*)
+|    |    |    |    \--- io.netty:netty-resolver:4.1.68.Final
+|    |    |    |         \--- io.netty:netty-common:4.1.68.Final
+|    |    |    +--- io.netty:netty-handler:4.1.65.Final -> 4.1.66.Final
+|    |    |    |    +--- io.netty:netty-common:4.1.66.Final -> 4.1.68.Final
+|    |    |    |    +--- io.netty:netty-resolver:4.1.66.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-buffer:4.1.66.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-transport:4.1.66.Final -> 4.1.68.Final (*)
+|    |    |    |    \--- io.netty:netty-codec:4.1.66.Final -> 4.1.68.Final
+|    |    |    |         +--- io.netty:netty-common:4.1.68.Final
+|    |    |    |         +--- io.netty:netty-buffer:4.1.68.Final (*)
+|    |    |    |         \--- io.netty:netty-transport:4.1.68.Final (*)
+|    |    |    +--- io.netty:netty-handler-proxy:4.1.65.Final
+|    |    |    |    +--- io.netty:netty-common:4.1.65.Final -> 4.1.68.Final
+|    |    |    |    +--- io.netty:netty-buffer:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-transport:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-codec:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-codec-socks:4.1.65.Final
+|    |    |    |    |    +--- io.netty:netty-common:4.1.65.Final -> 4.1.68.Final
+|    |    |    |    |    +--- io.netty:netty-buffer:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    |    +--- io.netty:netty-transport:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    |    \--- io.netty:netty-codec:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    \--- io.netty:netty-codec-http:4.1.65.Final -> 4.1.66.Final
+|    |    |    |         +--- io.netty:netty-common:4.1.66.Final -> 4.1.68.Final
+|    |    |    |         +--- io.netty:netty-buffer:4.1.66.Final -> 4.1.68.Final (*)
+|    |    |    |         +--- io.netty:netty-transport:4.1.66.Final -> 4.1.68.Final (*)
+|    |    |    |         +--- io.netty:netty-codec:4.1.66.Final -> 4.1.68.Final (*)
+|    |    |    |         \--- io.netty:netty-handler:4.1.66.Final (*)
+|    |    |    +--- io.netty:netty-codec-http:4.1.65.Final -> 4.1.66.Final (*)
+|    |    |    +--- io.netty:netty-codec-http2:4.1.65.Final
+|    |    |    |    +--- io.netty:netty-common:4.1.65.Final -> 4.1.68.Final
+|    |    |    |    +--- io.netty:netty-buffer:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-transport:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-codec:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-handler:4.1.65.Final -> 4.1.66.Final (*)
+|    |    |    |    \--- io.netty:netty-codec-http:4.1.65.Final -> 4.1.66.Final (*)
+|    |    |    +--- io.netty:netty-resolver:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    +--- io.netty:netty-resolver-dns:4.1.65.Final
+|    |    |    |    +--- io.netty:netty-common:4.1.65.Final -> 4.1.68.Final
+|    |    |    |    +--- io.netty:netty-buffer:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-resolver:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-transport:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-codec:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    +--- io.netty:netty-codec-dns:4.1.65.Final
+|    |    |    |    |    +--- io.netty:netty-common:4.1.65.Final -> 4.1.68.Final
+|    |    |    |    |    +--- io.netty:netty-buffer:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    |    +--- io.netty:netty-transport:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    |    \--- io.netty:netty-codec:4.1.65.Final -> 4.1.68.Final (*)
+|    |    |    |    \--- io.netty:netty-handler:4.1.65.Final -> 4.1.66.Final (*)
+|    |    |    +--- com.fasterxml.jackson.core:jackson-core:2.11.3
+|    |    |    \--- com.fasterxml.jackson.core:jackson-databind:2.11.3 (*)
+|    |    +--- io.netty:netty-codec-http:4.1.66.Final (*)
+|    |    +--- io.vertx:vertx-web:3.9.8
+|    |    |    +--- io.vertx:vertx-web-common:3.9.8
+|    |    |    |    \--- io.vertx:vertx-core:3.9.8 (*)
+|    |    |    +--- io.vertx:vertx-auth-common:3.9.8
+|    |    |    |    \--- io.vertx:vertx-core:3.9.8 (*)
+|    |    |    +--- io.vertx:vertx-bridge-common:3.9.8
+|    |    |    \--- io.vertx:vertx-core:3.9.8 (*)
+|    |    +--- org.apache.maven:maven-model-builder:3.6.2
+|    |    |    +--- org.codehaus.plexus:plexus-interpolation:1.25
+|    |    |    +--- javax.inject:javax.inject:1
+|    |    |    +--- org.apache.maven:maven-model:3.6.2
+|    |    |    +--- org.apache.maven:maven-artifact:3.6.2
+|    |    |    |    \--- org.apache.commons:commons-lang3:3.8.1 -> 3.10
+|    |    |    +--- org.apache.maven:maven-builder-support:3.6.2
+|    |    |    \--- org.eclipse.sisu:org.eclipse.sisu.inject:0.3.3
+|    |    +--- org.whitesource:maven-dependency-tree-parser:1.0.5
+|    |    |    +--- commons-lang:commons-lang:2.4 -> 2.6
+|    |    |    \--- commons-io:commons-io:2.0.1 -> 2.11.0
+|    |    +--- org.whitesource:wss-agent-api-client:2.7.7
+|    |    |    +--- org.whitesource:wss-agent-api:2.7.7
+|    |    |    |    +--- org.whitesource:wss-agent-via-api:2.7.7
+|    |    |    |    \--- commons-lang:commons-lang:2.6
+|    |    |    +--- org.whitesource:wss-agent-hash-calculator:2.7.7
+|    |    |    |    +--- org.whitesource:wss-agent-api:2.7.7 (*)
+|    |    |    |    +--- commons-lang:commons-lang:2.6
+|    |    |    |    +--- commons-io:commons-io:2.4 -> 2.11.0
+|    |    |    |    +--- org.whitesource:pecoff4j:0.0.2.1
+|    |    |    |    +--- net.java.dev.jna:jna-platform:4.1.0 -> 4.5.2 (*)
+|    |    |    |    \--- org.mozilla:rhino:1.7.7.2
+|    |    |    +--- org.whitesource:wss-agent-utils:2.7.7
+|    |    |    |    +--- org.whitesource:wss-agent-api:2.7.7 (*)
+|    |    |    |    \--- com.google.code.gson:gson:2.2.2
+|    |    |    +--- com.google.code.gson:gson:2.2.2
+|    |    |    \--- org.apache.httpcomponents:httpclient:4.4 -> 4.5.13 (*)
+|    |    +--- org.whitesource:wss-agent-report:2.7.7
+|    |    |    +--- org.whitesource:wss-agent-api:2.7.7 (*)
+|    |    |    +--- org.whitesource:wss-agent-hash-calculator:2.7.7 (*)
+|    |    |    +--- org.whitesource:wss-agent-utils:2.7.7 (*)
+|    |    |    +--- org.apache.velocity:velocity:1.7
+|    |    |    |    \--- commons-lang:commons-lang:2.4 -> 2.6
+|    |    |    +--- com.google.code.gson:gson:2.2.2
+|    |    |    \--- commons-io:commons-io:2.4 -> 2.11.0
+|    |    +--- commons-codec:commons-codec:1.15
+|    |    +--- org.eclipse.jgit:org.eclipse.jgit:4.10.0.201712302008-r (*)
+|    |    +--- org.tmatesoft.svnkit:svnkit:1.10.1
+|    |    |    +--- de.regnis.q.sequence:sequence-library:1.0.4
+|    |    |    +--- org.tmatesoft.sqljet:sqljet:1.1.12
+|    |    |    |    \--- org.antlr:antlr-runtime:3.4
+|    |    |    +--- net.java.dev.jna:jna:4.1.0 -> 4.5.2
+|    |    |    +--- net.java.dev.jna:jna-platform:4.1.0 -> 4.5.2 (*)
+|    |    |    +--- com.trilead:trilead-ssh2:1.0.0-build222
+|    |    |    +--- com.jcraft:jsch.agentproxy.connector-factory:0.0.7
+|    |    |    |    +--- com.jcraft:jsch.agentproxy.core:0.0.7
+|    |    |    |    +--- com.jcraft:jsch.agentproxy.usocket-jna:0.0.7
+|    |    |    |    |    +--- com.jcraft:jsch.agentproxy.core:0.0.7
+|    |    |    |    |    +--- net.java.dev.jna:jna:3.4.0 -> 4.5.2
+|    |    |    |    |    \--- net.java.dev.jna:platform:3.4.0
+|    |    |    |    +--- com.jcraft:jsch.agentproxy.usocket-nc:0.0.7
+|    |    |    |    |    \--- com.jcraft:jsch.agentproxy.core:0.0.7
+|    |    |    |    +--- com.jcraft:jsch.agentproxy.sshagent:0.0.7
+|    |    |    |    |    \--- com.jcraft:jsch.agentproxy.core:0.0.7
+|    |    |    |    \--- com.jcraft:jsch.agentproxy.pageant:0.0.7
+|    |    |    |         +--- com.jcraft:jsch.agentproxy.core:0.0.7
+|    |    |    |         +--- net.java.dev.jna:jna:3.4.0 -> 4.5.2
+|    |    |    |         \--- net.java.dev.jna:platform:3.4.0
+|    |    |    +--- com.jcraft:jsch.agentproxy.svnkit-trilead-ssh2:0.0.7
+|    |    |    |    +--- com.trilead:trilead-ssh2:1.0.0-build217 -> 1.0.0-build222
+|    |    |    |    \--- com.jcraft:jsch.agentproxy.core:0.0.7
+|    |    |    \--- org.lz4:lz4-java:1.4.1
+|    |    +--- com.aragost.javahg:javahg:0.4
+|    |    +--- net.lingala.zip4j:zip4j:1.3.3
+|    |    +--- org.apache.commons:commons-compress:1.21
+|    |    +--- com.github.junrar:junrar:1.0.1
+|    |    |    +--- commons-logging:commons-logging:1.2
+|    |    |    \--- org.apache.commons:commons-vfs2:2.2
+|    |    |         \--- commons-logging:commons-logging:1.2
+|    |    +--- org.redline-rpm:redline:1.2.9
+|    |    |    +--- org.slf4j:slf4j-api:1.7.5 -> 1.7.25
+|    |    |    +--- org.apache.commons:commons-compress:1.8 -> 1.21
+|    |    |    \--- org.tukaani:xz:1.4 -> 1.8
+|    |    +--- commons-io:commons-io:2.11.0
+|    |    +--- org.json:json:20200518
+|    |    +--- org.apache.commons:commons-lang3:3.4 -> 3.10
+|    |    +--- org.slf4j:slf4j-api:1.7.5 -> 1.7.25
+|    |    +--- com.fasterxml.jackson.core:jackson-databind:2.11.3 (*)
+|    |    +--- com.fasterxml.jackson.core:jackson-core:2.11.3
+|    |    +--- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.3 (*)
+|    |    +--- org.yaml:snakeyaml:1.26
+|    |    +--- commons-validator:commons-validator:1.6
+|    |    |    +--- commons-digester:commons-digester:1.8.1 -> 2.1
+|    |    |    |    +--- commons-beanutils:commons-beanutils:1.8.3 -> 1.9.4
+|    |    |    |    |    +--- commons-logging:commons-logging:1.2
+|    |    |    |    |    \--- commons-collections:commons-collections:3.2.2
+|    |    |    |    \--- commons-logging:commons-logging:1.1.1 -> 1.2
+|    |    |    \--- commons-logging:commons-logging:1.2
+|    |    +--- commons-beanutils:commons-beanutils:1.9.4 (*)
+|    |    +--- org.apache.commons:commons-collections4:4.4
+|    |    +--- org.jsoup:jsoup:1.11.3 -> 1.14.3
+|    |    +--- org.simpleframework:simple-xml:2.7.1
+|    |    |    +--- stax:stax-api:1.0.1
+|    |    |    +--- stax:stax:1.2.0
+|    |    |    |    \--- stax:stax-api:1.0.1
+|    |    |    \--- xpp3:xpp3:1.1.3.3 -> 1.1.4c
+|    |    \--- org.codehaus.plexus:plexus-container-default:1.7.1
+|    |         +--- org.codehaus.plexus:plexus-classworlds:2.5.1
+|    |         +--- org.apache.xbean:xbean-reflect:3.7
+|    |         \--- com.google.collections:google-collections:1.0
+|    +--- io.netty:netty-codec:4.1.68.Final (*)
+|    +--- org.jsoup:jsoup:1.14.3
+|    +--- com.beust:jcommander:1.78
+|    +--- org.apache.ant:ant:1.10.11
+|    |    \--- org.apache.ant:ant-launcher:1.10.11
+|    +--- org.springframework:spring-web:5.3.11
+|    |    +--- org.springframework:spring-beans:5.3.11
+|    |    |    \--- org.springframework:spring-core:5.3.11
+|    |    |         \--- org.springframework:spring-jcl:5.3.11
+|    |    \--- org.springframework:spring-core:5.3.11 (*)
+|    +--- org.awaitility:awaitility:4.0.2
+|    |    \--- org.hamcrest:hamcrest:2.1
+|    +--- org.apache.commons:commons-lang3:3.10
+|    +--- jakarta.xml.bind:jakarta.xml.bind-api:2.3.2
+|    |    \--- jakarta.activation:jakarta.activation-api:1.2.1
+|    \--- org.glassfish.jaxb:jaxb-runtime:2.3.2
+|         +--- jakarta.xml.bind:jakarta.xml.bind-api:2.3.2 (*)
+|         +--- org.glassfish.jaxb:txw2:2.3.2
+|         +--- com.sun.istack:istack-commons-runtime:3.0.8
+|         |    \--- jakarta.activation:jakarta.activation-api:1.2.1
+|         +--- org.jvnet.staxex:stax-ex:1.8.1
+|         |    +--- jakarta.activation:jakarta.activation-api:1.2.1
+|         |    \--- jakarta.xml.bind:jakarta.xml.bind-api:2.3.2 (*)
+|         +--- com.sun.xml.fastinfoset:FastInfoset:1.2.16
+|         \--- jakarta.activation:jakarta.activation-api:1.2.1
++--- com.fasterxml.jackson.core:jackson-core:2.11.3
++--- com.fasterxml.jackson.core:jackson-annotations:2.11.3
++--- com.fasterxml.jackson.core:jackson-databind:2.11.3 (*)
++--- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.3 (*)
++--- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.5
+|    +--- com.fasterxml.jackson.core:jackson-annotations:2.10.5 -> 2.11.3
+|    +--- com.fasterxml.jackson.core:jackson-core:2.10.5 -> 2.11.3
+|    \--- com.fasterxml.jackson.core:jackson-databind:2.10.5 -> 2.11.3 (*)
++--- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.5
+|    +--- com.fasterxml.jackson.core:jackson-core:2.10.5 -> 2.11.3
+|    \--- com.fasterxml.jackson.core:jackson-databind:2.10.5 -> 2.11.3 (*)
++--- org.apache.logging.log4j:log4j-slf4j-impl:2.17.0
+|    +--- org.slf4j:slf4j-api:1.7.25
+|    +--- org.apache.logging.log4j:log4j-api:2.17.0
+|    \--- org.apache.logging.log4j:log4j-core:2.17.0
+|         \--- org.apache.logging.log4j:log4j-api:2.17.0
++--- org.apache.logging.log4j:log4j-api:2.17.0
++--- org.apache.logging.log4j:log4j-core:2.17.0 (*)
++--- org.jenkins-ci.main:jenkins-core:2.77
+|    +--- org.jenkins-ci.plugins.icon-shim:icon-set:1.0.5
+|    +--- org.jenkins-ci.main:remoting:3.11
+|    |    \--- org.jenkins-ci:constant-pool-scanner:1.2
+|    +--- org.jenkins-ci.main:cli:2.77
+|    |    +--- org.kohsuke:access-modifier-annotation:1.11
+|    |    |    \--- org.jenkins-ci:annotation-indexer:1.4 -> 1.12
+|    |    +--- commons-codec:commons-codec:1.4 -> 1.15
+|    |    +--- commons-io:commons-io:2.4 -> 2.11.0
+|    |    +--- org.jenkins-ci.main:remoting:3.11 (*)
+|    |    +--- org.jvnet.localizer:localizer:1.24
+|    |    \--- org.jenkins-ci:trilead-ssh2:build214-jenkins-1 -> build-217-jenkins-11
+|    |         +--- net.i2p.crypto:eddsa:0.2.0
+|    |         \--- org.connectbot.jbcrypt:jbcrypt:1.0.0
+|    +--- org.jenkins-ci:version-number:1.4
+|    +--- org.jenkins-ci:crypto-util:1.1
+|    |    \--- commons-io:commons-io:1.4 -> 2.11.0
+|    +--- org.jvnet.hudson:jtidy:4aug2000r7-dev-hudson-1
+|    +--- com.google.inject:guice:4.0
+|    |    +--- javax.inject:javax.inject:1
+|    |    \--- aopalliance:aopalliance:1.0
+|    +--- org.jruby.ext.posix:jna-posix:1.0.3-jenkins-1
+|    +--- com.github.jnr:jnr-posix:3.0.41
+|    |    +--- com.github.jnr:jnr-ffi:2.1.4
+|    |    |    +--- com.github.jnr:jffi:1.2.15
+|    |    |    +--- org.ow2.asm:asm:5.0.3
+|    |    |    +--- org.ow2.asm:asm-commons:5.0.3
+|    |    |    |    \--- org.ow2.asm:asm-tree:5.0.3
+|    |    |    |         \--- org.ow2.asm:asm:5.0.3
+|    |    |    +--- org.ow2.asm:asm-analysis:5.0.3
+|    |    |    |    \--- org.ow2.asm:asm-tree:5.0.3 (*)
+|    |    |    +--- org.ow2.asm:asm-tree:5.0.3 (*)
+|    |    |    +--- org.ow2.asm:asm-util:5.0.3
+|    |    |    |    \--- org.ow2.asm:asm-tree:5.0.3 (*)
+|    |    |    \--- com.github.jnr:jnr-x86asm:1.0.2
+|    |    \--- com.github.jnr:jnr-constants:0.9.8
+|    +--- org.kohsuke:trilead-putty-extension:1.2
+|    |    \--- org.jenkins-ci:trilead-ssh2:build214-jenkins-1 -> build-217-jenkins-11 (*)
+|    +--- org.jenkins-ci:trilead-ssh2:build-217-jenkins-11 (*)
+|    +--- org.kohsuke.stapler:stapler-groovy:1.252
+|    |    +--- org.kohsuke.stapler:stapler-jelly:1.252
+|    |    |    +--- org.kohsuke.stapler:stapler:1.252
+|    |    |    |    +--- javax.annotation:javax.annotation-api:1.2
+|    |    |    |    +--- commons-discovery:commons-discovery:0.4
+|    |    |    |    |    \--- commons-logging:commons-logging:1.0.4 -> 1.2
+|    |    |    |    +--- commons-beanutils:commons-beanutils:1.7.0 -> 1.9.4 (*)
+|    |    |    |    +--- commons-io:commons-io:1.3.1 -> 2.11.0
+|    |    |    |    +--- org.jvnet.localizer:localizer:1.7 -> 1.24
+|    |    |    |    +--- org.kohsuke.stapler:json-lib:2.4-jenkins-2
+|    |    |    |    |    +--- commons-beanutils:commons-beanutils:1.8.0 -> 1.9.4 (*)
+|    |    |    |    |    +--- commons-collections:commons-collections:3.2.1 -> 3.2.2
+|    |    |    |    |    +--- commons-lang:commons-lang:2.5 -> 2.6
+|    |    |    |    |    +--- commons-logging:commons-logging:1.1.1 -> 1.2
+|    |    |    |    |    \--- net.sf.ezmorph:ezmorph:1.0.6
+|    |    |    |    |         \--- commons-lang:commons-lang:2.3 -> 2.6
+|    |    |    |    +--- org.jvnet:tiger-types:2.2
+|    |    |    |    +--- com.google.guava:guava:11.0.1 -> 29.0-jre (*)
+|    |    |    |    +--- org.kohsuke:asm5:5.0.1
+|    |    |    |    +--- commons-fileupload:commons-fileupload:1.2.1 -> 1.3.1-jenkins-1
+|    |    |    |    |    \--- commons-io:commons-io:2.2 -> 2.11.0
+|    |    |    |    +--- com.google.code.findbugs:jsr305:2.0.1 -> 3.0.2
+|    |    |    |    \--- com.jcraft:jzlib:1.1.3
+|    |    |    +--- org.jenkins-ci:commons-jelly:1.1-jenkins-20120928
+|    |    |    |    +--- org.jenkins-ci:commons-jexl:1.1-jenkins-20111212
+|    |    |    |    |    \--- commons-logging:commons-logging:1.0.3 -> 1.2
+|    |    |    |    +--- commons-beanutils:commons-beanutils:1.7.0 -> 1.9.4 (*)
+|    |    |    |    \--- commons-collections:commons-collections:3.2 -> 3.2.2
+|    |    |    \--- org.jenkins-ci.dom4j:dom4j:1.6.1-jenkins-4
+|    |    \--- org.codehaus.groovy:groovy-all:1.8.3 -> 2.4.11
+|    +--- org.kohsuke.stapler:stapler-jrebel:1.252
+|    |    \--- org.kohsuke.stapler:stapler:1.252 (*)
+|    +--- org.kohsuke:windows-package-checker:1.2
+|    +--- org.kohsuke.stapler:stapler-adjunct-zeroclipboard:1.3.5-1
+|    |    \--- org.kohsuke.stapler:stapler:1.140 -> 1.252 (*)
+|    +--- org.kohsuke.stapler:stapler-adjunct-timeline:1.5
+|    |    \--- org.kohsuke.stapler:stapler:1.140 -> 1.252 (*)
+|    +--- org.kohsuke.stapler:stapler-adjunct-codemirror:1.3
+|    |    \--- org.kohsuke.stapler:stapler:1.140 -> 1.252 (*)
+|    +--- com.infradna.tool:bridge-method-annotation:1.13
+|    |    \--- org.jenkins-ci:annotation-indexer:1.4 -> 1.12
+|    +--- org.kohsuke.stapler:json-lib:2.4-jenkins-2 (*)
+|    +--- commons-httpclient:commons-httpclient:3.1
+|    |    +--- commons-logging:commons-logging:1.0.4 -> 1.2
+|    |    \--- commons-codec:commons-codec:1.2 -> 1.15
+|    +--- args4j:args4j:2.0.31
+|    +--- org.jenkins-ci:annotation-indexer:1.12
+|    +--- org.jenkins-ci:bytecode-compatibility-transformer:1.8
+|    |    +--- org.jenkins-ci:annotation-indexer:1.4 -> 1.12
+|    |    +--- org.kohsuke:asm5:5.0.1
+|    |    +--- org.jenkins-ci:constant-pool-scanner:1.2
+|    |    \--- commons-io:commons-io:2.4 -> 2.11.0
+|    +--- org.jenkins-ci:task-reactor:1.4
+|    +--- org.jvnet.localizer:localizer:1.24
+|    +--- antlr:antlr:2.7.6
+|    +--- org.jvnet.hudson:xstream:1.4.7-jenkins-1
+|    +--- jfree:jfreechart:1.0.9
+|    |    \--- jfree:jcommon:1.0.12
+|    +--- org.apache.ant:ant:1.8.4 -> 1.10.11 (*)
+|    +--- commons-io:commons-io:2.4 -> 2.11.0
+|    +--- commons-lang:commons-lang:2.6
+|    +--- commons-digester:commons-digester:2.1 (*)
+|    +--- commons-beanutils:commons-beanutils:1.8.3 -> 1.9.4 (*)
+|    +--- org.apache.commons:commons-compress:1.10 -> 1.21
+|    +--- javax.mail:mail:1.4.4
+|    +--- org.jvnet.hudson:activation:1.1.1-hudson-1
+|    +--- jaxen:jaxen:1.1-beta-11
+|    |    +--- jdom:jdom:1.0
+|    |    \--- xom:xom:1.0b3
+|    |         +--- xerces:xmlParserAPIs:2.6.1
+|    |         +--- com.ibm.icu:icu4j:2.6.1
+|    |         +--- xalan:xalan:2.6.0
+|    |         \--- org.ccil.cowan.tagsoup:tagsoup:0.9.7
+|    +--- commons-jelly:commons-jelly-tags-fmt:1.0
+|    +--- commons-jelly:commons-jelly-tags-xml:1.1
+|    |    +--- commons-beanutils:commons-beanutils:1.6 -> 1.9.4 (*)
+|    |    +--- commons-collections:commons-collections:2.1 -> 3.2.2
+|    |    +--- commons-logging:commons-logging:1.0.3 -> 1.2
+|    |    +--- jaxen:jaxen:1.1-beta-2 -> 1.1-beta-11 (*)
+|    |    \--- xerces:xerces:2.2.1
+|    +--- org.jvnet.hudson:commons-jelly-tags-define:1.0.1-hudson-20071021
+|    +--- org.jenkins-ci:commons-jexl:1.1-jenkins-20111212 (*)
+|    +--- org.acegisecurity:acegi-security:1.0.7
+|    |    +--- org.springframework:spring-core:1.2.9 -> 5.3.11 (*)
+|    |    +--- org.springframework:spring-jdbc:1.2.9
+|    |    |    +--- commons-logging:commons-logging:1.0.4 -> 1.2
+|    |    |    +--- org.springframework:spring-beans:1.2.9 -> 5.3.11 (*)
+|    |    |    +--- org.springframework:spring-core:1.2.9 -> 5.3.11 (*)
+|    |    |    \--- org.springframework:spring-dao:1.2.9
+|    |    |         +--- commons-logging:commons-logging:1.0.4 -> 1.2
+|    |    |         +--- org.springframework:spring-beans:1.2.9 -> 5.3.11 (*)
+|    |    |         +--- org.springframework:spring-context:1.2.9 -> 2.5.6.SEC03
+|    |    |         |    +--- aopalliance:aopalliance:1.0
+|    |    |         |    +--- commons-logging:commons-logging:1.1.1 -> 1.2
+|    |    |         |    +--- org.springframework:spring-beans:2.5.6.SEC03 -> 5.3.11 (*)
+|    |    |         |    \--- org.springframework:spring-core:2.5.6.SEC03 -> 5.3.11 (*)
+|    |    |         \--- org.springframework:spring-core:1.2.9 -> 5.3.11 (*)
+|    |    +--- commons-lang:commons-lang:2.1 -> 2.6
+|    |    +--- commons-logging:commons-logging:1.0.4 -> 1.2
+|    |    +--- commons-codec:commons-codec:1.3 -> 1.15
+|    |    +--- oro:oro:2.0.8
+|    |    +--- commons-collections:commons-collections:3.1 -> 3.2.2
+|    |    \--- log4j:log4j:1.2.9
+|    +--- org.codehaus.groovy:groovy-all:2.4.11
+|    +--- jline:jline:2.12
+|    +--- org.fusesource.jansi:jansi:1.11
+|    +--- org.springframework:spring-webmvc:2.5.6.SEC03
+|    |    +--- commons-logging:commons-logging:1.1.1 -> 1.2
+|    |    +--- org.springframework:spring-beans:2.5.6.SEC03 -> 5.3.11 (*)
+|    |    +--- org.springframework:spring-context:2.5.6.SEC03 (*)
+|    |    +--- org.springframework:spring-context-support:2.5.6.SEC03
+|    |    |    +--- aopalliance:aopalliance:1.0
+|    |    |    +--- commons-logging:commons-logging:1.1.1 -> 1.2
+|    |    |    +--- org.springframework:spring-beans:2.5.6.SEC03 -> 5.3.11 (*)
+|    |    |    +--- org.springframework:spring-context:2.5.6.SEC03 (*)
+|    |    |    \--- org.springframework:spring-core:2.5.6.SEC03 -> 5.3.11 (*)
+|    |    +--- org.springframework:spring-core:2.5.6.SEC03 -> 5.3.11 (*)
+|    |    \--- org.springframework:spring-web:2.5.6.SEC03 -> 5.3.11 (*)
+|    +--- org.springframework:spring-core:2.5.6.SEC03 -> 5.3.11 (*)
+|    +--- org.springframework:spring-aop:2.5.6.SEC03
+|    |    +--- aopalliance:aopalliance:1.0
+|    |    +--- commons-logging:commons-logging:1.1.1 -> 1.2
+|    |    +--- org.springframework:spring-beans:2.5.6.SEC03 -> 5.3.11 (*)
+|    |    \--- org.springframework:spring-core:2.5.6.SEC03 -> 5.3.11 (*)
+|    +--- xpp3:xpp3:1.1.4c
+|    +--- javax.servlet:jstl:1.1.0
+|    +--- org.slf4j:jcl-over-slf4j:1.7.25
+|    |    \--- org.slf4j:slf4j-api:1.7.25
+|    +--- org.slf4j:log4j-over-slf4j:1.7.25
+|    |    \--- org.slf4j:slf4j-api:1.7.25
+|    +--- com.sun.xml.txw2:txw2:20110809
+|    |    +--- javax.xml.stream:stax-api:1.0-2
+|    |    \--- relaxngDatatype:relaxngDatatype:20020414
+|    +--- commons-collections:commons-collections:3.2.2
+|    +--- org.jvnet.winp:winp:1.25
+|    +--- org.jenkins-ci:memory-monitor:1.9
+|    |    \--- net.java.dev.jna:jna:4.1.0 -> 4.5.2
+|    +--- org.codehaus.woodstox:wstx-asl:3.2.9
+|    |    \--- stax:stax-api:1.0.1
+|    +--- org.jenkins-ci:jmdns:3.4.0-jenkins-3
+|    +--- net.java.dev.jna:jna:4.2.1 -> 4.5.2
+|    +--- org.kohsuke:akuma:1.10
+|    |    \--- net.java.dev.jna:jna:4.1.0 -> 4.5.2
+|    +--- org.kohsuke:libpam4j:1.8
+|    |    \--- net.java.dev.jna:jna:4.0.0 -> 4.5.2
+|    +--- org.kohsuke:libzfs:0.8
+|    |    \--- net.java.dev.jna:jna:3.5.2 -> 4.5.2
+|    +--- com.sun.solaris:embedded_su4j:1.1
+|    +--- net.java.sezpoz:sezpoz:1.12
+|    +--- org.kohsuke.jinterop:j-interop:2.0.6-kohsuke-1
+|    |    \--- org.kohsuke.jinterop:j-interopdeps:2.0.6-kohsuke-1
+|    |         \--- org.samba.jcifs:jcifs:1.2.19
+|    +--- org.jvnet.robust-http-client:robust-http-client:1.2
+|    +--- org.jenkins-ci:symbol-annotation:1.1
+|    |    \--- org.jenkins-ci:annotation-indexer:1.9 -> 1.12
+|    +--- commons-codec:commons-codec:1.8 -> 1.15
+|    +--- org.kohsuke:access-modifier-annotation:1.11 (*)
+|    +--- commons-fileupload:commons-fileupload:1.3.1-jenkins-1 (*)
+|    +--- org.mindrot:jbcrypt:0.4
+|    +--- com.google.guava:guava:11.0.1 -> 29.0-jre (*)
+|    \--- com.jcraft:jzlib:1.1.3-kohsuke-1 -> 1.1.3
++--- com.google.code.findbugs:annotations:3.0.0
++--- javax.servlet:javax.servlet-api:3.1.0
++--- org.jenkins-ci.main:maven-plugin:1.509.4
+\--- org.jenkins-ci.plugins:credentials:2.1.19
+
+(*) - dependencies omitted (listed previously)
+
+A web-based, searchable dependency report is available by adding the --scan option.
